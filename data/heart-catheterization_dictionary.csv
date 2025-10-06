@@ -1,0 +1,51 @@
+variable,description
+age,Age
+sex,Sex
+race,Race
+edu,Years of education
+income,Income
+ninsclas,Medical insurance
+cat1,Primary disease category
+cat2,Secondary disease category
+resp,Respiratory Diagnosis
+card,Cardiovascular Diagnosis
+neuro,Neurological Diagnosis
+gastr,Gastrointestinal Diagnosis
+renal,Renal Diagnosis
+meta,Metabolic Diagnosis
+hema,Hematologic Diagnosis
+seps,Sepsis Diagnosis
+trauma,Trauma Diagnosis
+ortho,Orthopedic Diagnosis
+adld3p,ADL
+das2d3pc,DASI ( Duke Activity Status Index)
+dnr1,DNR status on day1
+ca,Cancer
+surv2md1,Support model estimate of the prob. of surviving 2 months
+aps1,APACHE score
+scoma1,Glasgow Coma Score
+wtkilo1,Weight
+temp1,Temperature
+meanbp1,Mean blood pressure
+resp1,Respiratory rate
+hrt1,Heart rate
+pafi1,PaO2/FIO2 ratio
+paco21,PaCo2
+ph1,PH
+wblc1,WBC
+hema1,Hematocrit
+sod1,Sodium
+pot1,Potassium
+crea1,Creatinine
+bili1,Bilirubin
+alb1,Albumin
+urin1,Urine output
+swang1,Right Heart Catheterization (RHC)
+sadmdte,Study Admission Date
+dthdte,Date of Death
+lstctdte,Date of Last Contact
+dschdte,Hospital Discharge Date
+dth30,Death at any time up to 30 days after admission (Yes or No)
+t3d30,Number of days from admission to death within 30 days
+dth180,Death at any time up to 180 days after admission (Yes or No)
+ptid,Patient ID

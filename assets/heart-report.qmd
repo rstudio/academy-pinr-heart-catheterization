@@ -1,0 +1,62 @@
+---
+title: "Right heart catheterization in patients with an acute kidney injury (ARF)"
+format: 
+  html:
+    embed-resources: true
+execute:
+  echo: false
+  message: false
+  warning: false
+---
+
+```{r}
+library(tidyverse)
+library(survival)
+library(survminer)
+
+source("../data/heart-catheterization_06_debug.R")
+rhc <- read_rhc("../data/arf.csv")
+diagnoses <- read_csv("../data/diagnoses.csv")
+```
+
+## How do patients who received RHC compare to patients who did not?
+
+### Race
+
+```{r}
+rhc |> plot_rhc(race)
+```
+
+
+### Age
+
+```{r}
+rhc |> plot_rhc(age)
+```
+
+### Blood Pressure
+
+```{r}
+rhc |> plot_rhc(bp)
+```
+
+## Patients with other diagnoses
+
+### Chronic Renal Disease
+
+```{r}
+summarize_diagnosis(rhc, diagnoses, "renalhx")
+```
+
+### Congestive Heart Failure
+
+```{r}
+summarize_diagnosis(rhc, diagnoses, "chfhx")
+```
+
+## Survival curve
+
+```{r}
+kaplan_meier(rhc)
+```
+

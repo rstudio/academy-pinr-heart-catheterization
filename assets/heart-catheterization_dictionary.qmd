@@ -1,0 +1,56 @@
+---
+title: "Right Heart Catheterization"
+format: html
+---
+
+```{r setup, include=FALSE}
+```
+
+# Right Heart Catheterization
+
+The data comes from [Connors et al. (1996): The effectiveness of RHC in the initial care of critically ill patients. J American Medical Association 276:889-897](https://pubmed.ncbi.nlm.nih.gov/8782638/). 
+
+The data includes survival data for patients with various disease, some of which received a right heart catheterization (RHC).
+
+As described here: https://hbiostat.org/data/repo/rhc.html):
+
+> The dataset pertains to day 1 of hospitalization, i.e., the "treatment" variable swang1 is whether or not a patient received a RHC (also called the Swan-Ganz catheter) on the first day in which the patient qualified for the SUPPORT study (see above). The dataset is suitable for use in papers submitted in response to the call for papers on causal inference, by the journal Health Services and Outcomes Research Methodology. The original analysis by Connors et al. used binary logistic model to develop a propensity score that was then used for matching RHC patients with non-RHC patients. A sensitivity analysis was also done. 
+
+For this project, you'll work with multiple data sets.
+
+## Outcome data
+
+The RHC data that you'll work with is divided into files based on primary diagnosis. There are 9 files:
+
+* `arf.csv`
+* `chf.csv`
+* `cirrhosis.csv`
+* `colon_cancer.csv`
+* `coma.csv`
+* `copd.csv`
+* `lung_cancer.csv`
+* `mosf_malignancy.csv`
+* `mosf_sepsis.csv`
+
+### Data dictionary
+
+Each outcome file contains the following variables.
+
+```{r}
+readr::read_csv("../data/heart-catheterization_dictionary.csv") |>
+  knitr::kable()
+```
+
+
+## Diagnosis data
+
+`diagnoses.csv` contains additional diagnosis data for each patient.
+
+### Data dictionary
+
+`diagnoses.csv` contains the following variables.
+
+```{r}
+readr::read_csv("../data/heart-catheterization_diagnoses_dictionary.csv") |>
+  knitr::kable()
+```

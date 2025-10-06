@@ -1,0 +1,119 @@
+---
+title: "Functions"
+format: html
+---
+
+# Instructions
+
+Welcome to your first project milestone! Over the next six weeks, you will write your own functions to explore the effectiveness of right heart catheterization and generate reports to summarize your findings.
+
+To learn more about the variables contained in the data set, refer to the data dictionary here: https://rsacdn.link/milestones/internal/pinr/heart-catheterization/assets/heart-catheterization_dictionary.html
+
+
+## How to complete a milestone
+
+Each milestone will require you to write functions in an R script, edit a Quarto document, or both.
+
+For each milestone, you will need to: 
+
+1. **Recreate a result,** like a function that creates a plot or table. This will require you to use the skills you have studied that week.
+
+2. **Extend the result.** This will require you to teach yourself something new from a help page, website, book, or the world at large. Being able to teach yourself new parts of a computer language is what will make you a truly competent programmer---and we are here to help. 
+
+You'll share your extension with your groupmates at the weekly meeting, and show them how they could do the same. 
+
+# Milestone
+
+```{r}
+#| label: setup
+#| include: false
+source("heart-catheterization_01_functions.R")
+# Load your packages here
+library(tidyverse)
+```
+
+## Milestone 1
+
+In this milestone, you'll write two functions to read in the various right heart catheterization (RHC) data sets. 
+
+## Recreation
+
+### Part 1
+
+The data sets we'll use in this project are saved in the `data/` folder. Most of them (every data set except `diagnoses.csv`) contains right heart catheterization data for patients with a specific primary disease diagnosis. 
+
+Run the following code to take a look at the data for patients with cirrhosis:
+
+```{r}
+#| label: read-cirrhosis
+read_csv("data/cirrhosis.csv")
+```
+
+You want to write functions to help read in and process these files. First, notice how the columns `dth30`, `ca`, and `swang1` contain "Yes" and "No". We want these columns to contain `0`s and `1`s instead. 
+
+Write a function named `recode_yes()` that takes two arguments:
+
+* `x`: A character vector.
+* `yes`: A string containing the value to recode as `1`. By default, `yes` should be "Yes".
+
+Write your function in the script that should have opened alongside this document. 
+
+When you're done, un-comment and run the following chunk to test your function. `waldo::compare()` compares two vectors. If your function behaves as expected, each call to `waldo::compare()` will return "✔ No differences."
+
+```{r}
+#| label: recode-yes-test
+# waldo::compare(recode_yes(x = c("Yes", "No", "Yes")), c(1, 0, 1))
+# waldo::compare(recode_yes(x = c("y", "y", "n"), yes = "y"), c(1, 1, 0))
+```
+
+### Part 2
+
+Next, write a function to read in and process files like `data/cirrhosis.csv`. Your function should be named `read_rhc()` and take one argument, `file`, the path of the file to read. `read_rhc()` should:
+
+* Read in the data from `file`.
+* Select and rename according to the `select()` call included below.
+* Recode the `death`, `cancer`, and `rhc` columns using `recode_yes()`.
+
+```r
+select(
+  ptid,
+  age = age,
+  sex = sex,
+  race = race,
+  education = edu,
+  income = income,
+  med_ins = ninsclas,
+  disease = cat1,
+  cancer = ca,
+  weight = wtkilo1,
+  temp = temp1,
+  bp = meanbp1,
+  resp = resp1,
+  hrt = hrt1,
+  pf = pafi1,
+  ph = ph1,
+  death = dth30,
+  time = t3d30,
+  rhc = swang1
+)
+```
+
+Write your function in your script.
+
+When you're done, un-comment and run the following code to confirm that your function works as expected. 
+
+```{r}
+#| label: read-rhc-test
+#| message: false
+# cirrhosis <- read_rhc("data/cirrhosis.csv")
+# solution <- read_csv("data/solution_01.csv")
+# waldo::compare(cirrhosis, solution)
+```
+
+
+## Extension
+
+Write another function (or more) to further process or explore the RHC data sets.
+
+Write your extension code in your script.
+

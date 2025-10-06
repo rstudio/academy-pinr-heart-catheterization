@@ -1,0 +1,84 @@
+---
+title: "Debugging and state management"
+format: html
+---
+
+# Instructions
+
+For your final milestone, you'll create a parameterized Quarto report and write a function to render that report, and then create one report for each disease in a vector.
+
+To learn more about the variables contained in the data set, refer to the data dictionary here: https://rsacdn.link/milestones/internal/pinr/heart-catheterization/assets/heart-catheterization_dictionary.html
+
+# Milestone
+
+## Milestone 6
+
+In this milestone, you'll parameterize the report you made in Milestone 4 so that it will work for any RHC data set. Then, you'll write a function to render the report and iterate to create multiple reports.
+
+## Recreation
+
+### Parameterize
+
+First, parameterize the data set analyzed in `rhc-report.qmd` by:
+
+* Adding a `disease` parameter to the YAML header, so it looks like this:
+
+```
+---
+title: "Right heart catheterization"
+format: 
+  html:
+    embed-resources: true
+execute:
+  echo: false
+  message: false
+  warning: false
+params:
+  disease: "arf"
+---
+```
+
+* Editing the line where the specific RHC data set is read in (`rhc <- read_rhc("data/arf.csv")`) to use `params$disease` instead:
+
+```{r}
+#| eval: false
+rhc <- read_rhc(glue::glue("data/{params$disease}.csv"))
+```
+
+These two changes will allow you to use this report for any RHC data set. Try it out by changing `disease: "arf"` to `disease: "cirrhosis"` and then knitting the report. 
+
+### Function
+
+Next, write a function named `rhc_report()` that creates a report based on your parameterized report. Your function should:
+
+* Take one argument: `dx`, a string specifying the disease to use in the report. 
+* Use `quarto::quarto_render()` to render `rhc-report.qmd`, setting the parameter `disease` to `dx`.
+* Name the output file according to `dx`.
+
+_Hint:_ Here's an example call to `quarto::quarto_render()` that renders a report called `color.qmd` that has a `color` parameter:
+
+```{r}
+#| label: color-example
+#| eval: false
+quarto::quarto_render(
+  "color.qmd",
+  execute_params = list(color = "blue"),
+  output_file = "blue.html"
+)
+```
+
+Write `rhc_report()` in `heart-catheterization_06_debug.R`.
+
+### Iterate
+
+Next, use `rhc_report()` and a purrr function to create a report for each disease in the following vector:
+
+```{r}
+#| label: disease-vec
+diseases <- c("arf", "colon_cancer", "copd", "lung_cancer")
+```
+
+## Extension
+
+For your extension, expand upon the report in any way that you'd like.
+

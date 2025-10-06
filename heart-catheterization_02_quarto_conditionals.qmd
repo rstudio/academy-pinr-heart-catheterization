@@ -1,0 +1,86 @@
+---
+title: "Control function flow"
+format: html
+---
+
+# Instructions
+
+This week, you learned how to work with lists, iterate with purrr, and control function flow with conditional statements. In this milestone, you'll use what you've learned to write a new function and then iterate over a vector of inputs to that function.
+
+To learn more about the variables contained in the data set, refer to the data dictionary here: https://rsacdn.link/milestones/internal/pinr/heart-catheterization/assets/heart-catheterization_dictionary.html
+
+# Milestone
+
+```{r}
+#| label: setup
+#| include: false
+source("heart-catheterization_02_conditionals.R")
+# Load your packages here
+
+```
+
+## Milestone 2
+
+In this milestone, you'll write a function that summarizes other diagnoses assigned to patients in the RHC data sets. Then, you'll iterate over a vector to produce multiple of these summary tables at once.
+
+## Recreation
+
+### Part 1 - Summarize diagnoses
+
+First, in the script `heart-catheterization_02_conditionals.R`, create a function named `summarize_diagnosis()`. `summarize_diagnosis()` should take three arguments:
+
+* `data`: A processed RHC data set, like the result of `read_rhc("data/cirrhosis.csv")`.
+* `diagnosis_data`: A diagnoses data set, like the one stored in `data/diagnoses.csv`.
+* `dx`: A string containing a diagnosis.
+
+Then, `summarize_diagnosis()` should create a summary table displaying the number of patients in `data` with `dx`, like this:
+
+```{r}
+#| label: recreate-this
+#| echo: false
+solution <- readr::read_csv("data/solution_02.csv")
+solution
+```
+
+Use the following code to help you get started:
+
+```{r}
+#| label: get-started
+#| eval: false
+data |>
+  left_join(diagnosis_data, by = "ptid") |>
+  pivot_longer(
+    cols = cardiohx:amihx,
+    names_to = "diagnosis",
+    values_to = "present"
+  )
+```
+
+When you're done, un-comment and run the following code to see if your function works as expected.
+
+```{r}
+#| label: compare-1
+#| message: false
+# cirrhosis <- read_rhc("data/cirrhosis.csv")
+# diagnoses <- read_csv("data/diagnoses.csv")
+# result <- summarize_diagnosis(cirrhosis, diagnoses, dx = "dementhx")
+# waldo::compare(result, solution)
+```
+
+### Part 2 - Iterate
+
+Next, use purrr and `summarize_diagnosis()` to create a summary table for each diagnosis in the following vector:
+
+```{r}
+#| label: dx-vec
+#| eval: false
+c("malighx", "renalhx", "cardiohx")
+```
+
+Set `data` to `cirrhosis` and `diagnosis_data` to `diagnoses`.
+
+Write your code in `heart-catheterization_02_conditionals.R`.
+
+## Extension
+
+For your extension, consider expanding upon or further developing `summarize_diagnosis()`, or writing a new function.

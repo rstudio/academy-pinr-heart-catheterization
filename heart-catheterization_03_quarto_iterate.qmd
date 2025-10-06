@@ -1,0 +1,74 @@
+---
+title: "Iterate and write functions with the tidyverse"
+format: html
+---
+
+# Instructions
+
+In this milestone, you'll use tidy evaluation to write a function that plots the RHC data sets.
+
+To learn more about the variables contained in the data set, refer to the data dictionary here: https://rsacdn.link/milestones/internal/pinr/heart-catheterization/assets/heart-catheterization_dictionary.html
+
+# Milestone
+
+```{r}
+#| label: setup
+#| include: false
+source("heart-catheterization_03_iterate.R")
+# Load your packages here
+library(tidyverse)
+```
+
+## Milestone 3
+
+In this milestone you'll write a function to plot the RHC data.
+
+## Recreation
+
+The script `heart-catheterization_03_iterate.R` contains all the functions you've written so far. In this script, write a new function named `plot_rhc()` that:
+
+* Takes two arguments: `data` and `var`.
+* Plots a boxplot of `var` if `var` is numeric.
+* Plots a barplot of `var` if `var` is not numeric. 
+* Labels the x-axis "RHC".
+
+Your plots should look like this if `var` is numeric:
+
+```{r}
+#| label: compare-1
+#| echo: false
+knitr::include_graphics("images/image_03_numeric.png")
+```
+
+And like this if `var` is categorical:
+
+```{r}
+#| label: compare-2
+#| echo: false
+knitr::include_graphics("images/image_03_categorical.png")
+```
+
+When you're done, run the following code chunk to test your function. Your plots should match the ones displayed above. 
+
+```{r}
+#| label: compare
+cirrhosis <- read_rhc("data/cirrhosis.csv")
+cirrhosis |> plot_rhc(age)
+cirrhosis |> plot_rhc(race)
+```
+
+_Hint:_ To detect if `var` is numeric or not, first extract `var` from `data`, like this:
+
+```{r}
+#| label: hint
+#| eval: false
+col_var <-
+  data |>
+  pull({{ var }})
+```
+
+
+## Extension
+
+For your extension, consider writing other functions that plot different aspects of the RHC data sets. 
+

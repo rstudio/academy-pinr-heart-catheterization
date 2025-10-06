@@ -1,0 +1,71 @@
+---
+title: "Function-writing best practices"
+format: html
+---
+
+# Instructions
+
+This week you learned about best practices for function writing, including incorporating validation and stopping into your functions. In this milestone, you'll add validation and stopping conditions to `summarize_diagnosis()`.
+
+To learn more about the variables contained in the data set, refer to the data dictionary here: https://rsacdn.link/milestones/internal/pinr/heart-catheterization/assets/heart-catheterization_dictionary.html
+
+# Milestone
+
+```{r}
+#| label: setup
+#| include: false
+source("heart-catheterization_05_best-practices.R")
+# Load your packages here
+
+```
+
+## Milestone 5
+
+In this milestone, you'll add validation and stopping conditions to `summarize_diagnosis()`.
+
+## Recreation
+
+The script `heart-catheterization_05_best-practices.R` contains all the functions you've written so far, including `summarize_diagnosis()`.
+
+We can make `summarize_diagnosis()` more robust by validating arguments and stopping early if necessary.
+
+Check for the following four situations in `summarize_diagnosis()`:
+
+1. Check if `data` is a data frame, and throw an error if it's not. Use the error message "`data` must be a data frame."
+2. Check if `diagnosis_data` is a data frame, and throw an error if it's not. Use the error message "`diagnosis_data` must be a data frame."
+3. Check if `dx` is a character vector of length one, and throw an error if it's not. Use the error message "`dx` must be a character vector of length 1."
+4. Check if `dx` is a diagnosis included in `diagnosis_data` and throw an error if it's not. Use the error message "xyz is not a diagnosis included in `diagnosis_data`." Replace "xyz" with the diagnosis provided by the user.
+
+_Hint:_ You'll need to edit the `summarize_diagnosis()` code so that you can check if `dx` is in the `diagnosis` column after you pivot.
+
+Use the cli package to signal errors. 
+
+When you're done, run the following code chunk to confirm that you're function works as expected.
+
+```{r}
+#| label: compare
+#| error: true
+arf <- read_rhc("data/arf.csv")
+diagnosis_data <- read_csv("data/diagnoses.csv")
+
+# Should produce the error message "`data` must be a data frame."
+summarize_diagnosis(list(1, 2, 3), diagnosis_data, "liverhx")
+
+# Should produce the error message "`diagnosis_data` must be a data frame."
+summarize_diagnosis(arf, list(1, 2, 3), "liverhx")
+
+# Should produce the error message "na is not a diagnosis included in `diagnosis_data`."
+summarize_diagnosis(arf, diagnosis_data, "na")
+
+# Should produce the error message "`dx` must be a character vector of length 1."
+summarize_diagnosis(arf, diagnosis_data, c("psychhx", "dementhx"))
+
+# Should work successfully
+summarize_diagnosis(arf, diagnosis_data, "psychhx")
+```
+
+
+## Extension
+
+Consider updating the other functions in `heart-catheterization_05_best-practices.R` to incorporate argument validation.
+

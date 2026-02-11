@@ -32,21 +32,11 @@ The script `heart-catheterization_03_iterate.R` contains all the functions you'v
 * Plots a barplot of `var` if `var` is not numeric. 
 * Labels the x-axis "RHC".
 
-Your plots should look like this if `var` is numeric:
 
-```{r}
-#| label: compare-1
-#| echo: false
-knitr::include_graphics("images/image_03_numeric.png")
-```
+Using the File Explorer, navigate to the `images/` directory, then click on `image_03_numeric.png` to open an image. **Your plots should look like this if `var` is numeric.** 
 
-And like this if `var` is categorical:
 
-```{r}
-#| label: compare-2
-#| echo: false
-knitr::include_graphics("images/image_03_categorical.png")
-```
+Using the File Explorer, navigate to the `images/` directory, then click on `image_03_categorical.png` to open an image. **Your plot should look like this if `var` is categorical.**
 
 When you're done, run the following code chunk to test your function. Your plots should match the ones displayed above. 
 

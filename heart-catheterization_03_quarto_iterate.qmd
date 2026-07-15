@@ -7,7 +7,7 @@ format: html
 
 In this milestone, you'll use tidy evaluation to write a function that plots the RHC data sets.
 
-To learn more about the variables contained in the data set, refer to the data dictionary here: https://rsacdn.link/milestones/internal/pinr/heart-catheterization/assets/heart-catheterization_dictionary.html
+To learn more about the variables contained in the data set, refer to the data dictionary here: https://rstudio.github.io/academy-pinr-heart-catheterization/assets/heart-catheterization_dictionary.html
 
 # Milestone
 

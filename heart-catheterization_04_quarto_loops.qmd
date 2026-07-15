@@ -8,9 +8,9 @@ format: html
 This week, you learned how to write for loops and practiced purrr. In this milestone, you'll continue writing functions to analyze the RHC data sets. 
 
 You'll also recreate this Quarto report that calls the functions you've written:  
-https://rsacdn.link/milestones/internal/pinr/heart-catheterization/assets/heart-report.html
+https://rstudio.github.io/academy-pinr-heart-catheterization/assets/heart-report.html
 
-To learn more about the variables contained in the data set, refer to the data dictionary here: https://rsacdn.link/milestones/internal/pinr/heart-catheterization/assets/heart-catheterization_dictionary.html
+To learn more about the variables contained in the data set, refer to the data dictionary here: https://rstudio.github.io/academy-pinr-heart-catheterization/assets/heart-catheterization_dictionary.html
 
 # Milestone
 
@@ -84,7 +84,7 @@ Using the File Explorer, navigate to the `images/` directory, then click on `ima
 
 ## Part 2 - Report
 
-Next, use the functions in `heart-catheterization_04_loops.R` to recreate [this Quarto report](https://rsacdn.link/milestones/internal/pinr/heart-catheterization/assets/heart-report.html
+Next, use the functions in `heart-catheterization_04_loops.R` to recreate [this Quarto report](https://rstudio.github.io/academy-pinr-heart-catheterization/assets/heart-report.html
 
 To re-create the report, first open a new Quarto document. You will need to: 
 

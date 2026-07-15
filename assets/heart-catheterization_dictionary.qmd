@@ -1,6 +1,8 @@
 ---
 title: "Right Heart Catheterization"
-format: html
+format:
+  html:
+    embed-resources: true
 ---
 
 ```{r setup, include=FALSE}

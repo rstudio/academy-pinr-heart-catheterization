@@ -7,7 +7,7 @@ format: html
 
 This week you learned about best practices for function writing, including incorporating validation and stopping into your functions. In this milestone, you'll add validation and stopping conditions to `summarize_diagnosis()`.
 
-To learn more about the variables contained in the data set, refer to the data dictionary here: https://rsacdn.link/milestones/internal/pinr/heart-catheterization/assets/heart-catheterization_dictionary.html
+To learn more about the variables contained in the data set, refer to the data dictionary here: https://rstudio.github.io/academy-pinr-heart-catheterization/assets/heart-catheterization_dictionary.html
 
 # Milestone
 

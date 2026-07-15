@@ -7,7 +7,7 @@ format: html
 
 Welcome to your first project milestone! Over the next six weeks, you will write your own functions to explore the effectiveness of right heart catheterization and generate reports to summarize your findings.
 
-To learn more about the variables contained in the data set, refer to the data dictionary here: https://rsacdn.link/milestones/internal/pinr/heart-catheterization/assets/heart-catheterization_dictionary.html
+To learn more about the variables contained in the data set, refer to the data dictionary here: https://rstudio.github.io/academy-pinr-heart-catheterization/assets/heart-catheterization_dictionary.html
 
 
 ## How to complete a milestone
